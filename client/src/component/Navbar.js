@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink , useNavigate } from 'react-router-dom';
 import Badge from 'react-bootstrap/Badge'
+import Modal from '../screens/Model';
+import Ocart from '../screens/Ocart';
+import { useCart } from './ContextReducer';
 // import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
-
+  const data = useCart();
+  const [cartView , setcartView] = useState(false);
   const navigate = useNavigate();
   const handleEvent = () =>{
     localStorage.removeItem("authToken");
@@ -36,9 +40,10 @@ const Navbar = () => {
               <NavLink className="btn bg-white text-success mx-1" to="/signup">Signup</NavLink>
             </div> :
             <>
-            <div className='btn bg-white text-success mx-2'>My Cart{" "}
-            <Badge pill bg='danger'>2</Badge>
+            <div className='btn bg-white text-success mx-2' onClick={()=>setcartView(true)}>My Cart{" "}
+            <Badge pill bg='danger'>{data.length}</Badge>
             </div>
+            {cartView ? <Modal onClose={() => setcartView(false)}><Ocart/></Modal>:null}
             <div className='btn bg-danger text-white mx-2' onClick={handleEvent}> logout</div>
             </>
             }
