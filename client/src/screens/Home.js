@@ -87,8 +87,8 @@ const Home = () => {
                                     {foodItem !== [] ? foodItem.filter((item) => (item.CategoryName === data.CategoryName && (item.name.toLowerCase().includes(search.toLocaleLowerCase())))).map(filterItem => {
                                         return (
                                             <div key={filterItem._id} className='col-12 col-md-6 col-lg-3 ms-5'>
-                                                <Cart foodname={filterItem.name} options={filterItem.options[0]}
-                                                    imgSrc={filterItem.img}
+                                                <Cart foodItem = {filterItem}
+                                                 options={filterItem.options[0]}
                                                 />
                                             </div>
                                         )

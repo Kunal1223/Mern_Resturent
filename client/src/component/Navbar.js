@@ -1,5 +1,6 @@
 import React from 'react'
-import { NavLink , useNavigate } from 'react-router-dom'
+import { NavLink , useNavigate } from 'react-router-dom';
+import Badge from 'react-bootstrap/Badge'
 // import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
@@ -35,7 +36,9 @@ const Navbar = () => {
               <NavLink className="btn bg-white text-success mx-1" to="/signup">Signup</NavLink>
             </div> :
             <>
-            <div className='btn bg-white text-success mx-2'>My Cart</div>
+            <div className='btn bg-white text-success mx-2'>My Cart{" "}
+            <Badge pill bg='danger'>2</Badge>
+            </div>
             <div className='btn bg-danger text-white mx-2' onClick={handleEvent}> logout</div>
             </>
             }
