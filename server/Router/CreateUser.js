@@ -22,7 +22,7 @@ async(req, res) => {
     }
 
     const salt = await bcrypt.genSalt(10);
-    let secPassword = await   bcrypt.hash(req.body.password , salt);
+    let secPassword = await bcrypt.hash(req.body.password , salt);
 
     try { 
         // const{name , email , password , location} = req.body;
@@ -61,10 +61,10 @@ async(req, res) => {
         if(!userData){
             return res.status(400).json({error:"please enter the valid credentials"})
         }
-
+        
         const pwdCompare = await bcrypt.compare(req.body.password , userData.password)
         if( !pwdCompare){
-            return res.status(400).json({error:"please enter the valid credentials in password"})
+            return res.status(400).json({error:"please enter the valid credentials"})
         }
 
         const data = {
@@ -74,7 +74,6 @@ async(req, res) => {
         }
 
         const authToken = jwt.sign(data,key);
-
             return res.json({ success: true , authToken:authToken });
         
 
@@ -85,4 +84,4 @@ async(req, res) => {
 }); 
 
 
-module.exports = router;
+module.exports = router;            

@@ -3,24 +3,30 @@ import React, { createContext, useContext, useReducer } from 'react'
 // import Login from './screens/Login';
 // import Signup from './screens/Signup';
 
-const cartStateContext = createContext();
-const cartDisptchContext = createContext();
+const cartStateh = createContext();
+const cartDispatchh = createContext();
 
 const reducer = (state, action) => {
-
+    switch(action.type){
+        case 'ADD':
+            return[...state ,{}]
+        
+        default:
+            console.log('Error in Reducer');
+    }
 }
 
-export const CartProvider = ({ childeren }) => {
+export const CartProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, [])
     return (
-        <cartDisptchContext.Provider value={dispatch}>
-            <cartStateContext.Provider value={state}>
-                {childeren}
-            </cartStateContext.Provider>
-        </cartDisptchContext.Provider>
+        <cartDispatchh.Provider value={dispatch}>
+            <cartStateh.Provider value={state}>
+                {children}
+            </cartStateh.Provider>
+        </cartDispatchh.Provider>
     );
 };
 
-export const useCart = () => useContext(cartStateContext);
-export const useDispatch = () => useContext(cartDisptchContext);
+export const useCart = () => useContext(cartStateh);
+export const useDispatch = () => useContext(cartDispatchh);
 

@@ -15,7 +15,7 @@ app.use((req, res, next) => {
     next();
 });
 
-require('./DB/db')
+require('./DB/db') 
 app.use('/api', require('./Router/CreateUser'));
 app.use('/api', require('./Router/DisplayData'));
 
