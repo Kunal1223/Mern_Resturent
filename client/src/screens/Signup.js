@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink , useNavigate} from 'react-router-dom'
 import Navbar from '../component/Navbar'
 
 const Signup = () => {
-
+    const navigate = useNavigate();
     const [cradentials, setcradentials] = useState({ name: "", email: "", password: "", geolocation: "" })
 
     const handleSubmit = async (e) => {
-        console.log("i am in here");
         e.preventDefault();
-        console.log(JSON.stringify({ name: cradentials.name, email: cradentials.email, password: cradentials.password, location: cradentials.geolocation }));
-
         const response = await fetch("http://localhost:5000/api/createuser", {
             method: 'POST',
             headers: {
@@ -26,6 +23,11 @@ const Signup = () => {
         if (!json.success) {
             alert("Invalid Credentials");
         }
+        else{
+            alert("Signup Successfully😎")
+            setcradentials({ name: "", email: "", password: "", geolocation: "" });
+            navigate('/login');
+        }
     }
 
     const onChange = (e) => {
@@ -36,7 +38,7 @@ const Signup = () => {
     return (
         <>
             <Navbar />
-            <div className="container mt-5 m-auto">
+            <div className="container mt-5">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="name" className="form-label">Name</label>

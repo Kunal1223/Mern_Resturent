@@ -5,7 +5,7 @@ import { NavLink , useNavigate } from 'react-router-dom'
 
 
 const Login = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   const [cradentials, setcradentials] = useState({email:"", password:""});
 
   const handleSubmit = async (e) => {
@@ -42,7 +42,7 @@ const Login = () => {
   return (
     <>
       <Navbar />
-      <div className="container mt-5 m-auto">
+      <div className="container mt-5 m-auto mb-7">
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>

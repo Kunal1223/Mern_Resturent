@@ -11,3 +11,16 @@
 #navbarNav li{
     color: white
 }
+
+#footer{
+    text-align: center;
+    margin-top: 160px;
+    text-decoration: none;
+}
+
+.home{
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    margin-right: 6px;
+}
