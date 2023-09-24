@@ -60,7 +60,7 @@ export default function Ocart() {
             {data.map((food, index) => (
               <tr>
                 <th scope='row' >{index + 1}</th>
-                <td >{food.name}</td>
+                <td >{food.name}</td> 
                 <td>{food.qty}</td>
                 <td>{food.size}</td>
                 <td>{food.price}</td>
